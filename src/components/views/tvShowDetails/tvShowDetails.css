@@ -1,0 +1,9 @@
+ul.selectedShowDetails {
+  margin-bottom: 1rem;
+  list-style: none;
+  display: flex;
+}
+
+ul.selectedShowDetails li {
+  margin-right: 1rem;
+}

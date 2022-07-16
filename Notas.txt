@@ -1,0 +1,13 @@
+idioma
+sort (release date/vote average/alphabetical)
+release year
+
+sección géneros
+
+
+header carousel: llamo a populares
+
+grid: 
+
+	- (default) llamo a populares - limito a 10 de las más populares
+	- llamo por params de búsqueda

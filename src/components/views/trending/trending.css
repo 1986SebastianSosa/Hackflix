@@ -1,0 +1,10 @@
+.headerTitle {
+  position: absolute;
+  z-index: 100;
+  top: 25rem;
+  left: 183px;
+  width: 30%;
+  color: white;
+  font-size: 1.1rem;
+  text-align: left;
+}
