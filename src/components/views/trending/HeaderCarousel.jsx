@@ -5,6 +5,8 @@ import ContentLoader from "react-content-loader";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import { useNavigate } from "react-router-dom";
+import Logo from "../../../img/Logos/logo_transparent_edited_4.png";
+import "./trending.css";
 
 const HeaderCarousel = ({ trending }) => {
   const baseUrl = process.env.REACT_APP_BASE_URL;
@@ -31,6 +33,11 @@ const HeaderCarousel = ({ trending }) => {
               return (
                 <Box key={film.id}>
                   <Box className="headerTitle">
+                    <img
+                      src={Logo}
+                      alt="film.title"
+                      style={{ width: "3rem", display: "inline" }}
+                    />
                     <h1>{film.title}</h1>
                     <Box sx={{ mt: 2 }}>
                       <Button

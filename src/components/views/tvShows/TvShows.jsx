@@ -1,5 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Box, Grid, useTheme, Container, Typography } from "@mui/material";
+import {
+  Box,
+  Grid,
+  useTheme,
+  Container,
+  Typography,
+  CssBaseline,
+} from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import InfiniteScroll from "react-infinite-scroll-component";
@@ -43,6 +50,19 @@ const TvShows = () => {
 
   return (
     <>
+      <CssBaseline />
+      <Box
+        sx={{
+          position: "absolute",
+          height: "100%",
+          width: "100%",
+          zIndex: "-100",
+          opacity: "0.05",
+          background: `linear-gradient(to top, transparent 80%, #181818), linear-gradient(to bottom, transparent 80%, #181818), url(https://i.ibb.co/wByQ4hR/Films-Grid.jpg)`,
+          backgroundRepeat: "repeat",
+          backgroundSize: "cover",
+        }}
+      ></Box>
       <Container>
         <Genres
           type="movie"

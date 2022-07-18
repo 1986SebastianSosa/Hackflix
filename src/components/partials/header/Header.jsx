@@ -12,7 +12,7 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
-import Logo from "../../../img/93ef4b87d141410f84f0fbda09fc243a.png";
+import Logo from "../../../img/Logos/logo_transparent_edited_4.png";
 import { useTheme } from "@mui/system";
 import { useNavigate } from "react-router-dom";
 
@@ -44,7 +44,7 @@ const Header = () => {
           <Box
             sx={{
               width: "10rem",
-              height: "2rem",
+              height: "6rem",
               ":hover": { cursor: "pointer" },
             }}
             onClick={() => {
@@ -54,7 +54,7 @@ const Header = () => {
             <img
               src={Logo}
               alt=""
-              style={{ width: "100%", height: "100%", objectFit: "cover" }}
+              style={{ height: "100%", objectFit: "contain" }}
             />
           </Box>
 

@@ -2,8 +2,11 @@ ul.selectedFilmDetails {
   margin-bottom: 1rem;
   list-style: none;
   display: flex;
+  align-items: center;
 }
 
 ul.selectedFilmDetails li {
   margin-right: 1rem;
+  display: flex;
+  align-items: center;
 }

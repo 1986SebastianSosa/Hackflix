@@ -1,5 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Box, Grid, useTheme, Container, Typography } from "@mui/material";
+import {
+  Box,
+  Grid,
+  useTheme,
+  Container,
+  Typography,
+  CssBaseline,
+} from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import InfiniteScroll from "react-infinite-scroll-component";
@@ -43,60 +50,75 @@ const Movies = () => {
 
   return (
     <>
-      <Container>
-        <Genres
-          type="movie"
-          setMovies={setMovies}
-          setPage={setPage}
-          genres={genres}
-          setGenres={setGenres}
-          setSelectedGenre={setSelectedGenre}
-        />
-        <InfiniteScroll
-          dataLength={movies}
-          next={handleMore}
-          hasMore={true}
-          loader={<h4>Loading...</h4>}
-          endMessage={
-            <p style={{ textAlign: "center" }}>
-              <b>Yay! You have seen it all</b>
-            </p>
-          }
-        >
-          <Grid container spacing={3} columns={15}>
-            {movies.map((film, index) => {
-              return (
-                <Grid item xs={12} md={3} key={index}>
-                  <Box
-                    onClick={() => navigate(`/filmDetails/${film.id}`)}
-                    sx={{
-                      width: "100%",
-                      height: "315px",
-                      display: "flex",
-                      alignItems: "flex-end",
-                      textAlign: "center",
-                      justifyContent: "center",
-                      border: `1px solid ${theme.palette.primary.main}`,
-                      background: `center / contain no-repeat url(${
-                        film.poster_path
-                          ? imgPath + film.poster_path
-                          : cameraIcon
-                      })`,
-                      ":hover": {
-                        cursor: "pointer",
-                      },
-                    }}
-                  >
-                    {!film.poster_path && (
-                      <Typography variant="h6">{film.title}</Typography>
-                    )}
-                  </Box>
-                </Grid>
-              );
-            })}
-          </Grid>
-        </InfiniteScroll>
-      </Container>
+      <CssBaseline />
+      <Box>
+        <Box
+          sx={{
+            position: "absolute",
+            height: "100%",
+            width: "100%",
+            zIndex: "-100",
+            opacity: "0.05",
+            background: `linear-gradient(to top, transparent 80%, #181818), linear-gradient(to bottom, transparent 80%, #181818), url(https://i.ibb.co/wByQ4hR/Films-Grid.jpg)`,
+            backgroundRepeat: "repeat",
+            backgroundSize: "cover",
+          }}
+        ></Box>
+        <Container>
+          <Genres
+            type="movie"
+            setMovies={setMovies}
+            setPage={setPage}
+            genres={genres}
+            setGenres={setGenres}
+            setSelectedGenre={setSelectedGenre}
+          />
+          <InfiniteScroll
+            dataLength={movies}
+            next={handleMore}
+            hasMore={true}
+            loader={<h4>Loading...</h4>}
+            endMessage={
+              <p style={{ textAlign: "center" }}>
+                <b>Yay! You have seen it all</b>
+              </p>
+            }
+          >
+            <Grid container spacing={3} columns={15}>
+              {movies.map((film, index) => {
+                return (
+                  <Grid item xs={12} md={3} key={index}>
+                    <Box
+                      onClick={() => navigate(`/filmDetails/${film.id}`)}
+                      sx={{
+                        width: "100%",
+                        height: "315px",
+                        display: "flex",
+                        alignItems: "flex-end",
+                        textAlign: "center",
+                        justifyContent: "center",
+                        border: `1px solid ${theme.palette.primary.main}`,
+                        background: `center / contain no-repeat url(${
+                          film.poster_path
+                            ? imgPath + film.poster_path
+                            : cameraIcon
+                        })`,
+                        ":hover": {
+                          cursor: "pointer",
+                        },
+                      }}
+                    >
+                      {!film.poster_path && (
+                        <Typography variant="h6">{film.title}</Typography>
+                      )}
+                    </Box>
+                  </Grid>
+                );
+              })}
+            </Grid>
+          </InfiniteScroll>
+        </Container>
+      </Box>
     </>
   );
 };

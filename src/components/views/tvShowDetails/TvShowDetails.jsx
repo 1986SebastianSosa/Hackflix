@@ -99,19 +99,23 @@ const TvShowDetails = () => {
         <ContentLoader />
       ) : (
         <main>
-          <Box>
-            <img
-              src={selectedShow && backdropPath + selectedShow.backdrop_path}
-              style={{
+          <Box sx={{ overflow: "hidden" }}>
+            <Box
+              sx={{
                 position: "absolute",
-                objectFit: "cover",
-                opacity: "0.2",
-                zIndex: -100,
-                width: "100%",
                 height: "100%",
+                width: "100%",
+                zIndex: "-100",
+                opacity: "0.15",
+                top: 0,
+                left: 0,
+                background: `linear-gradient(to bottom, transparent 80%, #181818), url(${
+                  backdropPath + selectedShow.backdrop_path
+                })`,
+                backgroundRepeat: "no-repeat",
+                backgroundSize: "cover",
               }}
-              alt={selectedShow.name}
-            />
+            ></Box>
             <Container>
               <Grid container spacing={5} mt={2} mb={5}>
                 <Grid item xs={4}>
@@ -126,7 +130,7 @@ const TvShowDetails = () => {
                       border: `1px solid ${theme.palette.primary.main}`,
                       borderRadius: "15px",
 
-                      background: `center / contain no-repeat url(${
+                      background: `center / cover no-repeat url(${
                         selectedShow.poster_path
                           ? posterPath + selectedShow.poster_path
                           : cameraIcon
@@ -245,7 +249,20 @@ const TvShowDetails = () => {
           </Box>
         </main>
       )}
-      <section style={{ marginBottom: "2rem" }}>
+      <section>
+        <Box
+          sx={{
+            position: "absolute",
+            height: "100%",
+            width: "100%",
+            zIndex: "-100",
+            opacity: "0.05",
+
+            background: `linear-gradient(to top, transparent 80%, #181818), url(https://i.ibb.co/wByQ4hR/Films-Grid.jpg)`,
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover",
+          }}
+        ></Box>
         <Box my={5}>
           <h1 style={{ textAlign: "center" }}>Similar Shows</h1>
           <Slider

@@ -42,7 +42,6 @@ const Genres = ({
       url: `/genre/${type}/list`,
       params: { api_key: apiKey },
     });
-    console.log("fetch genres ", data.genres);
     setGenres(data.genres);
   };
 

@@ -17,8 +17,10 @@ import ContentLoader from "react-content-loader";
 import "./filmDetails.css";
 import cameraIcon from "../../../img/camera_icon.png";
 import Slider from "react-slick";
+import StarIcon from "@mui/icons-material/Star";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 
 const FilmDetails = () => {
   const params = useParams();
@@ -50,6 +52,7 @@ const FilmDetails = () => {
         const response = await axios.get(
           `${baseUrl}/movie/${params.id}?api_key=${apiKey}`
         );
+        console.log(response.data);
         setSelectedFilm(response.data);
       } catch (err) {
         return err;
@@ -62,7 +65,6 @@ const FilmDetails = () => {
         const response = await axios.get(
           `${baseUrl}/movie/${params.id}/credits?api_key=${apiKey}`
         );
-        console.log(response);
         setCrew(response.data.crew);
         setCast(response.data.cast);
       } catch (err) {
@@ -90,7 +92,6 @@ const FilmDetails = () => {
       actors.push(cast[i]);
     }
   }
-  console.log("actors ", actors);
 
   const director = crew.find((crewMember) => crewMember.job === "Director");
 
@@ -102,22 +103,23 @@ const FilmDetails = () => {
         <ContentLoader />
       ) : (
         <main>
-          <Box>
-            <img
-              src={
-                selectedFilm.backdrop_path &&
-                backdropPath + selectedFilm.backdrop_path
-              }
-              style={{
+          <Box sx={{ overflow: "hidden" }}>
+            <Box
+              sx={{
                 position: "absolute",
-                objectFit: "cover",
-                opacity: "0.2",
-                zIndex: -100,
-                width: "100%",
                 height: "100%",
+                width: "100%",
+                zIndex: "-100",
+                opacity: "0.15",
+                top: 0,
+                left: 0,
+                background: `linear-gradient(to bottom, transparent 80%, #181818), url(${
+                  backdropPath + selectedFilm.backdrop_path
+                })`,
+                backgroundRepeat: "no-repeat",
+                backgroundSize: "cover",
               }}
-              alt=""
-            />
+            ></Box>
             <Container>
               <Grid container spacing={5} mt={2} mb={5}>
                 <Grid item xs={4}>
@@ -164,12 +166,36 @@ const FilmDetails = () => {
                       <p>{selectedFilm.release_date.replaceAll("-", "/")}</p>
                     </li>
                     <li>
+                      <FiberManualRecordIcon fontSize="1px" />
+                    </li>
+                    <li>
                       <p>
-                        {selectedFilm.genres.map((genre) => genre.name + "/")}
+                        {selectedFilm.genres.map((genre) => genre.name + " / ")}
                       </p>
                     </li>
                     <li>
+                      <FiberManualRecordIcon
+                        fontSize="1px"
+                        sx={{ textAlign: "center" }}
+                      />
+                    </li>
+                    <li>
                       <p>{selectedFilm.runtime + " mins"}</p>
+                    </li>
+                    <li>
+                      <FiberManualRecordIcon fontSize="1px" />
+                    </li>
+                    <li>
+                      <Box display="flex" alignItems="center">
+                        <StarIcon
+                          sx={{
+                            mr: "3px",
+                            fontSize: "1.8rem",
+                            color: "primary.main",
+                          }}
+                        />{" "}
+                        <span>{selectedFilm.vote_average}</span>
+                      </Box>
                     </li>
                   </ul>
                   <Typography variant="body2">
@@ -249,7 +275,20 @@ const FilmDetails = () => {
           </Box>
         </main>
       )}
-      <section style={{ marginBottom: "2rem" }}>
+      <section>
+        <Box
+          sx={{
+            position: "absolute",
+            height: "100%",
+            width: "100%",
+            zIndex: "-100",
+            opacity: "0.05",
+
+            background: `linear-gradient(to top, transparent 80%, #181818), url(https://i.ibb.co/wByQ4hR/Films-Grid.jpg)`,
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover",
+          }}
+        ></Box>
         <h1 style={{ textAlign: "center" }}>Similar Films</h1>
         {similarFilms && (
           <Slider

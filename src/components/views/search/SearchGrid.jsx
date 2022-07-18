@@ -29,29 +29,16 @@ const SearchGrid = () => {
     <>
       <Box
         sx={{
-          width: "100%",
-          height: "100%",
           position: "absolute",
-          overflow: "hidden",
-          top: 0,
-          opacity: "0.1",
-          zIndex: -100,
-          display: "flex",
-          justifyContent: "center",
+          height: "100%",
+          width: "100%",
+          zIndex: "-100",
+          opacity: "0.05",
+          background: `linear-gradient(to top, transparent 80%, #181818), linear-gradient(to bottom, transparent 80%, #181818), url(https://i.ibb.co/wByQ4hR/Films-Grid.jpg)`,
+          backgroundRepeat: "repeat",
+          backgroundSize: "cover",
         }}
-      >
-        <img
-          src={FilmsGrid}
-          alt=""
-          style={{
-            position: "relative",
-            zIndex: -100,
-            top: 0,
-            width: "120%",
-            transform: "skew(10deg)",
-          }}
-        />
-      </Box>
+      ></Box>
       <Container>
         <Search
           tab={tab}
