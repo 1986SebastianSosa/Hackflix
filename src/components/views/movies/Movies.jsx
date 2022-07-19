@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import InfiniteScroll from "react-infinite-scroll-component";
 import cameraIcon from "../../../img/camera_icon.png";
-import Genres from "../../Genres";
+import MovieGenres from "../../MovieGenres";
 
 const Movies = () => {
   const imgPath = process.env.REACT_APP_IMG_POSTER_PATH;
@@ -68,7 +68,7 @@ const Movies = () => {
           <Typography variant="h2" textAlign="center" mt={2}>
             Movies
           </Typography>
-          <Genres
+          <MovieGenres
             sx={{ display: "inline" }}
             type="movie"
             setMovies={setMovies}

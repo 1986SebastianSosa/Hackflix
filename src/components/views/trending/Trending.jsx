@@ -28,7 +28,6 @@ const Trending = () => {
       url: "/trending/movie/day",
       params: { api_key: apiKey, page: page, include_adult: false },
     });
-    console.log(data.results);
     settrending([...trending, ...data.results]);
   };
 

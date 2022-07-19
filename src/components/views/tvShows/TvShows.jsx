@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import InfiniteScroll from "react-infinite-scroll-component";
 import cameraIcon from "../../../img/camera_icon.png";
-import Genres from "../../Genres";
+import TvShowGenres from "../../TvShowGenres";
 
 const TvShows = () => {
   const imgPath = process.env.REACT_APP_IMG_POSTER_PATH;
@@ -67,8 +67,8 @@ const TvShows = () => {
         <Typography variant="h2" textAlign="center" mt={2}>
           TV Shows
         </Typography>
-        <Genres
-          type="movie"
+        <TvShowGenres
+          type="tv"
           setTvShows={setTvShows}
           setPage={setPage}
           genres={genres}
@@ -111,7 +111,7 @@ const TvShows = () => {
                     }}
                   >
                     {!show.poster_path && (
-                      <Typography variant="h6">{show.title}</Typography>
+                      <Typography variant="h4">{show.title}</Typography>
                     )}
                   </Box>
                 </Grid>

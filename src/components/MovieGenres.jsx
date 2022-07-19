@@ -7,7 +7,7 @@ import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import { useTheme } from "@emotion/react";
 import { Grid, Typography } from "@mui/material";
 
-const Genres = ({
+const MovieGenres = ({
   setMovies,
   setPage,
   genres,
@@ -29,7 +29,6 @@ const Genres = ({
   };
 
   const handleSelectGenre = (genre) => {
-    console.log(genre);
     handleClose();
     setMovies([]);
     setPage(1);
@@ -81,7 +80,7 @@ const Genres = ({
           horizontal: "left",
         }}
       >
-        <Grid container width="450px">
+        <Grid container width="600px">
           {genres.map((genre) => {
             return (
               <Grid
@@ -126,4 +125,4 @@ const Genres = ({
   );
 };
 
-export default Genres;
+export default MovieGenres;
