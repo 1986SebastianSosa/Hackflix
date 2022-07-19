@@ -89,27 +89,38 @@ const TvShows = () => {
           <Grid container spacing={3} columns={15}>
             {tvShows.map((show, index) => {
               return (
-                <Grid item xs={12} md={3} key={index}>
+                <Grid item xs={7.5} sm={5} md={3} key={index}>
                   <Box
                     onClick={() => navigate(`/tvshowdetails/${show.id}`)}
                     sx={{
-                      width: "100%",
-                      height: "315px",
                       display: "flex",
                       alignItems: "flex-end",
                       textAlign: "center",
                       justifyContent: "center",
                       border: `1px solid ${theme.palette.primary.main}`,
-                      background: `center / contain no-repeat url(${
-                        show.poster_path
-                          ? imgPath + show.poster_path
-                          : cameraIcon
-                      })`,
+                      // background: `center / contain no-repeat url(${
+                      //   show.poster_path
+                      //     ? imgPath + show.poster_path
+                      //     : cameraIcon
+                      // })`,
                       ":hover": {
                         cursor: "pointer",
                       },
                     }}
                   >
+                    <img
+                      src={
+                        show.poster_path
+                          ? imgPath + show.poster_path
+                          : cameraIcon
+                      }
+                      alt={show.title}
+                      style={{
+                        height: "100%",
+                        width: "100%",
+                        objectFit: "contain",
+                      }}
+                    />
                     {!show.poster_path && (
                       <Typography variant="h4">{show.title}</Typography>
                     )}

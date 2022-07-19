@@ -80,14 +80,16 @@ const TvShowGenres = ({
           horizontal: "left",
         }}
       >
-        <Grid container width="600px">
+        <Grid container width={{ maxWidth: "600px", xs: "100%" }}>
           {genres.map((genre, index) => {
             return (
               <Grid
                 key={index}
                 item
                 onClick={() => handleSelectGenre(genre)}
-                xs={4}
+                xs={12}
+                sm={6}
+                md={4}
                 textAlign="center"
                 fontSize={20}
                 py="5px"

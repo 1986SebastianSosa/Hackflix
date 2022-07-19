@@ -6,6 +6,7 @@ import {
   CssBaseline,
   Snackbar,
   Typography,
+  useMediaQuery,
 } from "@mui/material";
 import { useEffect, useState } from "react";
 import ContentLoader from "react-content-loader";
@@ -13,7 +14,6 @@ import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import { useNavigate } from "react-router-dom";
 import Logo from "../../../img/Logos/logo_transparent_edited_4.png";
-import "./trending.css";
 import { Container } from "@mui/system";
 
 const HeaderCarousel = ({ trending }) => {
@@ -22,6 +22,7 @@ const HeaderCarousel = ({ trending }) => {
   const apiKey = process.env.REACT_APP_TMDB_KEY;
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
+  const query600 = useMediaQuery("(min-width: 600px)");
 
   const handleClick = () => {
     setOpen(true);
@@ -53,27 +54,49 @@ const HeaderCarousel = ({ trending }) => {
               return (
                 <>
                   <Container>
-                    <Box className="headerTitle">
-                      <img
-                        src={Logo}
-                        alt="film.title"
-                        style={{ width: "3rem", display: "inline" }}
-                      />
-                      <h1>{film.title}</h1>
+                    <Box
+                      sx={{
+                        position: "absolute",
+                        top: { md: "50vh", xs: "20vh" },
+                        zIndex: "100",
+                        color: "white",
+                        fontSize: "1.1rem",
+                        textAlign: "left",
+                      }}
+                    >
+                      <Box
+                        sx={{ width: { xs: "1rem", sm: "1.5rem", md: "2rem" } }}
+                      >
+                        <img
+                          src={Logo}
+                          alt="film.title"
+                          style={{
+                            width: "100%",
+                            display: "inline",
+                          }}
+                        />
+                      </Box>
+                      <Typography
+                        variant="h2"
+                        sx={{ fontSize: { xs: "2rem", md: "3rem" } }}
+                      >
+                        {film.title}
+                      </Typography>
                       <Box sx={{ mt: 2 }}>
                         <Button
                           onClick={handleClick}
                           variant="contained"
-                          large
                           sx={{
-                            fontSize: "1.1rem",
+                            fontSize: { xs: "18px", md: "1.1rem" },
                             fontWeight: "600",
                             color: "white",
                             backgroundColor: "rgba(252, 163, 17,0.8)",
                             mr: 2,
                           }}
                         >
-                          <PlayArrowIcon fontSize="large" />
+                          <PlayArrowIcon
+                            fontSize={query600 ? "large" : "small"}
+                          />
                           Play
                         </Button>
                         <Snackbar
@@ -84,7 +107,7 @@ const HeaderCarousel = ({ trending }) => {
                           <Alert
                             onClose={handleClose}
                             severity="info"
-                            sx={{ width: "100%" }}
+                            sx={{ width: { xs: "360px", sm: "100%" } }}
                           >
                             This functionality is beyond the scope of this
                             project
@@ -106,7 +129,10 @@ const HeaderCarousel = ({ trending }) => {
                             },
                           }}
                         >
-                          <InfoOutlinedIcon fontSize="large" sx={{ mr: 1 }} />
+                          <InfoOutlinedIcon
+                            fontSize={query600 ? "large" : "small"}
+                            sx={{ mr: 1 }}
+                          />
                           More Info
                         </Button>
                       </Box>
@@ -117,16 +143,18 @@ const HeaderCarousel = ({ trending }) => {
                     <Box
                       className="headerImage"
                       width="100%"
-                      height="85vh"
+                      height={{ xs: "50vh", md: "85vh" }}
+                      minHeight="50vh"
                       margin="auto"
                       textAlign="center"
                       sx={{
-                        background: `linear-gradient(to top, transparent 80%, #181818), linear-gradient(to bottom, transparent 80%, #181818), url(${
+                        background: `center linear-gradient(to top, transparent 80%, #181818), linear-gradient(to bottom, transparent 80%, #181818), url(${
                           imgPath + film.backdrop_path
                         })`,
                         opacity: "0.6",
                         backgroundRepeat: "no-repeat",
                         backgroundSize: "cover",
+                        backgroundPosition: "center",
                         display: "flex",
                         justifyContent: "center",
                         alignItems: "flex-end",

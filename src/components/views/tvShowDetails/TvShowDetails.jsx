@@ -8,6 +8,7 @@ import {
   Typography,
   Box,
   useTheme,
+  useMediaQuery,
 } from "@mui/material";
 import { useState } from "react";
 import ContentLoader from "react-content-loader";
@@ -29,6 +30,7 @@ const TvShowDetails = () => {
   const [crew, setCrew] = useState([]);
   const [cast, setCast] = useState([]);
   const [similarShows, setSimilarShows] = useState([]);
+  const query900 = useMediaQuery("(min-width:900px)");
 
   const crewCardStyle = {
     marginTop: "5px",
@@ -118,11 +120,11 @@ const TvShowDetails = () => {
             ></Box>
             <Container>
               <Grid container spacing={5} mt={2} mb={5}>
-                <Grid item xs={4}>
+                <Grid item md={4} xs={12}>
                   <Box
                     sx={{
-                      height: "100%",
-                      width: "100%",
+                      width: { md: "100%", xs: "50%" },
+                      margin: "auto",
                       display: "flex",
                       alignItems: "flex-end",
                       textAlign: "center",
@@ -130,25 +132,37 @@ const TvShowDetails = () => {
                       border: `1px solid ${theme.palette.primary.main}`,
                       borderRadius: "15px",
 
-                      background: `center / cover no-repeat url(${
-                        selectedShow.poster_path
-                          ? posterPath + selectedShow.poster_path
-                          : cameraIcon
-                      })`,
-                      backgroundColor: theme.palette.background.secondary,
+                      // background: `center / cover no-repeat url(${
+                      //   selectedShow.poster_path
+                      //     ? posterPath + selectedShow.poster_path
+                      //     : cameraIcon
+                      // })`,
+                      // backgroundColor: theme.palette.background.secondary,
 
                       ":hover": {
                         cursor: "pointer",
                       },
                     }}
-                  ></Box>
+                  >
+                    {" "}
+                    <img
+                      src={
+                        selectedShow.poster_path
+                          ? posterPath + selectedShow.poster_path
+                          : cameraIcon
+                      }
+                      alt={selectedShow.title}
+                      style={{ width: "100%", borderRadius: "15px" }}
+                    />
+                  </Box>
                 </Grid>
-                <Grid item xs={8} display="flex" flexDirection="column">
+                <Grid item md={8} xs={12} display="flex" flexDirection="column">
                   <Typography
                     variant="h4"
                     fontWeight="800"
                     display="inline"
                     mr={2}
+                    sx={{ fontSize: { xs: "2rem", sm: "3rem" } }}
                   >
                     {selectedShow.name}
                   </Typography>
@@ -158,19 +172,24 @@ const TvShowDetails = () => {
                   >
                     ({selectedShow.first_air_date.slice(0, 4)})
                   </Typography>
-                  <ul className="selectedShowDetails">
-                    <li>
-                      <p>{selectedShow.first_air_date.replaceAll("-", "/")}</p>
-                    </li>
-                    <li>
-                      <p>
-                        {selectedShow.genres.map((genre) => genre.name + "/")}
-                      </p>
-                    </li>
-                    <li>
-                      <p>{selectedShow.runtime + " mins"}</p>
-                    </li>
-                  </ul>
+                  <Box sx={{ display: { md: "flex", xs: "none" } }}>
+                    <ul className="selectedShowDetails">
+                      <li>
+                        <p>
+                          {selectedShow.first_air_date.replaceAll("-", "/")}
+                        </p>
+                      </li>
+                      <li>
+                        <p>
+                          {selectedShow.genres.map((genre) => genre.name + "/")}
+                        </p>
+                      </li>
+                      <li>
+                        <p>{selectedShow.runtime + " mins"}</p>
+                      </li>
+                    </ul>
+                  </Box>
+
                   <Typography variant="body2">
                     {" "}
                     <i>{selectedShow.tagline}</i>
@@ -184,8 +203,8 @@ const TvShowDetails = () => {
                   </Typography>
                   {crew && (
                     <Grid container mt={1} spacing={3} height="100%">
-                      <Grid item xs={4} display="flex" alignItems="center">
-                        <Box textAlign="center">
+                      <Grid xs={12} sm={4} display="flex" alignItems="center">
+                        <Box textAlign="center" m="auto">
                           <p>
                             <b> Directed by: </b>
                           </p>
@@ -199,13 +218,13 @@ const TvShowDetails = () => {
                                     : cameraIcon
                                   : cameraIcon
                               }
-                              alt=""
+                              alt={director && director.name}
                               style={crewCardStyle}
                             />
                           </Box>
                         </Box>
                       </Grid>
-                      <Grid item xs={8}>
+                      <Grid item xs={12} sm={8}>
                         <Box
                           sx={{
                             width: "100%",
@@ -268,7 +287,7 @@ const TvShowDetails = () => {
           <Slider
             arrows={false}
             autoplay={true}
-            slidesToShow={5}
+            slidesToShow={query900 ? 5 : 3}
             slidesToScroll={2}
             speed={1000}
             autoplaySpeed={4000}
@@ -288,7 +307,15 @@ const TvShowDetails = () => {
                   },
                 }}
               >
-                <h3>{film.title}</h3>
+                <Typography
+                  variant="h3"
+                  sx={{
+                    display: { xs: "none", sm: "block" },
+                    fontSize: { sm: "1.5rem" },
+                  }}
+                >
+                  {film.title}
+                </Typography>
                 <img
                   src={
                     film.poster_path

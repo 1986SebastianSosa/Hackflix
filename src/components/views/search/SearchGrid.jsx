@@ -71,27 +71,34 @@ const SearchGrid = () => {
           <Grid container spacing={3} columns={15}>
             {gridFilms.map((film, index) => {
               return (
-                <Grid item xs={12} md={3} key={index}>
+                <Grid item xs={7.5} sm={5} md={3} key={index}>
                   <Box
                     onClick={() => navigate(`/filmDetails/${film.id}`)}
                     sx={{
-                      width: "100%",
-                      height: "315px",
                       display: "flex",
                       alignItems: "flex-end",
                       textAlign: "center",
                       justifyContent: "center",
                       border: `1px solid ${theme.palette.primary.main}`,
-                      background: `center / contain no-repeat url(${
-                        film.poster_path
-                          ? imgPath + film.poster_path
-                          : cameraIcon
-                      })`,
+                      // background: `center / contain no-repeat url(${
+                      //   film.poster_path
+                      //     ? imgPath + film.poster_path
+                      //     : cameraIcon
+                      // })`,
                       ":hover": {
                         cursor: "pointer",
                       },
                     }}
                   >
+                    <img
+                      src={
+                        film.poster_path
+                          ? imgPath + film.poster_path
+                          : cameraIcon
+                      }
+                      alt={film.title}
+                      style={{ width: "100%", objectFit: "cover" }}
+                    />
                     {!film.poster_path && (
                       <Typography variant="h6">{film.title}</Typography>
                     )}

@@ -61,6 +61,7 @@ const About = () => {
             xs={12}
             md={4}
             display="flex"
+            flexDirection="column"
             justifyContent="center"
             alignItems="center"
           >
@@ -75,44 +76,41 @@ const About = () => {
                 alt="Sebastian Sosa Avatar"
                 style={{ width: "100%", height: "100%" }}
               />
-              <Box textAlign="center" mt={2}>
-                <IconButton
-                  sx={{
-                    color: "white",
-                    transition: "0.1s",
-                    ":hover": {
-                      color: "primary.main",
-                      transform: "translate(0,-3px)",
-                    },
-                  }}
-                  onClick={() =>
-                    window.open(
-                      "https://www.linkedin.com/in/sebastian-sosa-cinotti/",
-                      "_blank"
-                    )
-                  }
-                >
-                  <FontAwesomeIcon icon={faLinkedin} className="fa-md" />
-                </IconButton>
-                <IconButton
-                  sx={{
-                    color: "white",
-                    transition: "0.1s",
-                    ":hover": {
-                      color: "primary.main",
-                      transform: "translate(0,-3px)",
-                    },
-                  }}
-                  onClick={() =>
-                    window.open(
-                      "https://github.com/1986SebastianSosa",
-                      "_blank"
-                    )
-                  }
-                >
-                  <FontAwesomeIcon icon={faGithub} className="fa-md" />
-                </IconButton>
-              </Box>
+            </Box>
+            <Box textAlign="center" mt={2} display="block">
+              <IconButton
+                sx={{
+                  color: "white",
+                  transition: "0.1s",
+                  ":hover": {
+                    color: "primary.main",
+                    transform: "translate(0,-3px)",
+                  },
+                }}
+                onClick={() =>
+                  window.open(
+                    "https://www.linkedin.com/in/sebastian-sosa-cinotti/",
+                    "_blank"
+                  )
+                }
+              >
+                <FontAwesomeIcon icon={faLinkedin} className="fa-md" />
+              </IconButton>
+              <IconButton
+                sx={{
+                  color: "white",
+                  transition: "0.1s",
+                  ":hover": {
+                    color: "primary.main",
+                    transform: "translate(0,-3px)",
+                  },
+                }}
+                onClick={() =>
+                  window.open("https://github.com/1986SebastianSosa", "_blank")
+                }
+              >
+                <FontAwesomeIcon icon={faGithub} className="fa-md" />
+              </IconButton>
             </Box>
           </Grid>
           <Grid item xs={12} md={8}>
