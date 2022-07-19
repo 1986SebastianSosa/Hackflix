@@ -14,6 +14,13 @@ const theme = createTheme({
     text: { primary: "#e5e5e5", secondary: "#14213d" },
     background: { default: "#181818", secondary: "#e5e5e5" },
   },
+  typography: {
+    fontFamily: "font-family: Crimson Text, serif",
+    fontSize: 16,
+    h1: { fontSize: "1rem" },
+    h2: { fontSize: "3rem", marginBottom: "1rem" },
+    body1: { marginBottom: "1rem" },
+  },
 });
 
 export default theme;

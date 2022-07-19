@@ -14,7 +14,8 @@ import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import Logo from "../../../img/Logos/logo_transparent_edited_4.png";
 import { useTheme } from "@mui/system";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { CssBaseline } from "@mui/material";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -39,11 +40,16 @@ const Header = () => {
 
   return (
     <AppBar position="sticky" sx={{ backgroundColor: "background.default" }}>
+      <CssBaseline />
       <Container>
-        <Toolbar disableGutters>
+        <Toolbar
+          disableGutters
+          sx={{ display: "flex", justifyContent: "space-between" }}
+        >
           <Box
             sx={{
-              width: "10rem",
+              display: "flex",
+              alignItems: "center",
               height: "6rem",
               ":hover": { cursor: "pointer" },
             }}
@@ -54,8 +60,18 @@ const Header = () => {
             <img
               src={Logo}
               alt=""
-              style={{ height: "100%", objectFit: "contain" }}
+              style={{
+                height: "100%",
+                objectFit: "contain",
+                marginRight: "1rem",
+              }}
             />
+            <h4 style={{ display: "inline", color: "white" }}>Hackflix</h4>
+          </Box>
+          <Box>
+            <Link to="/about">
+              <h4>About</h4>
+            </Link>
           </Box>
 
           <Box
@@ -92,56 +108,6 @@ const Header = () => {
               sx={{
                 display: { xs: "block", md: "none" },
               }}
-            ></Menu>
-          </Box>
-          <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href=""
-            sx={{
-              mr: 2,
-              display: { xs: "flex", md: "none" },
-              flexGrow: 1,
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "secondary",
-              textDecoration: "none",
-            }}
-          >
-            LOGO
-          </Typography>
-          <Box
-            sx={{
-              flexGrow: 1,
-              display: { xs: "none", md: "flex" },
-              justifyContent: "center",
-            }}
-          ></Box>
-
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: "45px" }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
             ></Menu>
           </Box>
         </Toolbar>
