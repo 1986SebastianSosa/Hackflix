@@ -23,3 +23,7 @@ a {
   text-decoration: none;
   color: white;
 }
+
+#demo-positioned-menu ul {
+  background-color: #e5e5e5;
+}

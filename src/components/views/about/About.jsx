@@ -116,7 +116,7 @@ const About = () => {
             </Box>
           </Grid>
           <Grid item xs={12} md={8}>
-            <Typography variant="h2" color="primary">
+            <Typography variant="h3" color="primary" mb={2}>
               About me
             </Typography>
             <Typography variant="body1">
@@ -144,7 +144,7 @@ const About = () => {
         </Grid>
         <Grid container spacing={5}>
           <Grid item xs={12} md={8}>
-            <Typography variant="h2" color="primary">
+            <Typography variant="h3" color="primary" mb={2}>
               About the Project
             </Typography>
             <Typography variant="body1">

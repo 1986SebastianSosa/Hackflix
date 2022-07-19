@@ -40,6 +40,9 @@ const Trending = () => {
     <>
       <HeaderCarousel trending={trending} />
       <Container>
+        <Typography variant="h2" textAlign="center" mt={2}>
+          Trending
+        </Typography>
         <InfiniteScroll
           dataLength={trending}
           next={handleMore}

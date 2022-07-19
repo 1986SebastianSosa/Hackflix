@@ -65,7 +65,11 @@ const Movies = () => {
           }}
         ></Box>
         <Container>
+          <Typography variant="h2" textAlign="center" mt={2}>
+            Movies
+          </Typography>
           <Genres
+            sx={{ display: "inline" }}
             type="movie"
             setMovies={setMovies}
             setPage={setPage}
@@ -73,6 +77,7 @@ const Movies = () => {
             setGenres={setGenres}
             setSelectedGenre={setSelectedGenre}
           />
+
           <InfiniteScroll
             dataLength={movies}
             next={handleMore}

@@ -5,6 +5,7 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import { useTheme } from "@emotion/react";
+import { Grid, Typography } from "@mui/material";
 
 const Genres = ({
   setMovies,
@@ -51,6 +52,9 @@ const Genres = ({
 
   return (
     <div>
+      <Typography variant="span" mr={2} fontSize="1.6rem">
+        Sort by:
+      </Typography>
       <Button
         sx={{ my: 5, color: "text.primary" }}
         id="demo-positioned-button"
@@ -77,22 +81,46 @@ const Genres = ({
           horizontal: "left",
         }}
       >
-        {genres.map((genre) => {
-          return (
-            <MenuItem
-              sx={{
-                backgroundColor: "background.default",
-                ":hover": {
-                  backgroundColor: "background.default",
-                  borderBottom: `1px solid ${theme.palette.primary.main}`,
-                },
-              }}
-              onClick={() => handleSelectGenre(genre)}
-            >
-              {genre.name}
-            </MenuItem>
-          );
-        })}
+        <Grid container width="450px">
+          {genres.map((genre) => {
+            return (
+              <Grid
+                item
+                onClick={() => handleSelectGenre(genre)}
+                xs={4}
+                textAlign="center"
+                fontSize={20}
+                py="5px"
+                px="10px"
+                color="text.secondary"
+                sx={{
+                  transition: "0.2s",
+                  ":hover": {
+                    cursor: "pointer",
+                    transform: "scale(1.2)",
+                    boxShadow:
+                      "0px 1px 2px -1px rgba(0, 0, 0, 0.2),0px 2px 3px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);",
+                  },
+                }}
+              >
+                {genre.name}
+              </Grid>
+
+              // <MenuItem
+              //   sx={{
+              //     backgroundColor: "background.default",
+              //     ":hover": {
+              //       backgroundColor: "background.default",
+              //       borderBottom: `1px solid ${theme.palette.primary.main}`,
+              //     },
+              //   }}
+              //   onClick={() => handleSelectGenre(genre)}
+              // >
+              //   {genre.name}
+              // </MenuItem>
+            );
+          })}
+        </Grid>
       </Menu>
     </div>
   );

@@ -40,20 +40,23 @@ const SearchGrid = () => {
         }}
       ></Box>
       <Container>
-        <Search
-          tab={tab}
-          search={search}
-          setSearch={setSearch}
-          gridFilms={gridFilms}
-          setGridFilms={setGridFilms}
-          page={page}
-        />
-        <ColorTabs
-          tab={tab}
-          setTab={setTab}
-          setGridFilms={setGridFilms}
-          setPage={setPage}
-        />
+        <Box mb={5}>
+          <Search
+            tab={tab}
+            search={search}
+            setSearch={setSearch}
+            gridFilms={gridFilms}
+            setGridFilms={setGridFilms}
+            page={page}
+            setPage={setPage}
+          />
+          <ColorTabs
+            tab={tab}
+            setTab={setTab}
+            setGridFilms={setGridFilms}
+            setPage={setPage}
+          />
+        </Box>
         <InfiniteScroll
           dataLength={gridFilms}
           next={handleMore}

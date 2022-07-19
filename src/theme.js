@@ -17,8 +17,7 @@ const theme = createTheme({
   typography: {
     fontFamily: "font-family: Crimson Text, serif",
     fontSize: 16,
-    h1: { fontSize: "1rem" },
-    h2: { fontSize: "3rem", marginBottom: "1rem" },
+    h2: { marginBottom: "1rem" },
     body1: { marginBottom: "1rem" },
   },
 });

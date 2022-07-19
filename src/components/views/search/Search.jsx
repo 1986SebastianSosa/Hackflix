@@ -1,11 +1,25 @@
-import { CssBaseline, Grid, TextField, useTheme } from "@mui/material";
+import {
+  CssBaseline,
+  Grid,
+  TextField,
+  Typography,
+  useTheme,
+} from "@mui/material";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
 const baseUrl = process.env.REACT_APP_BASE_URL;
 const apiKey = process.env.REACT_APP_TMDB_KEY;
 
-const Search = ({ gridFilms, setGridFilms, page, search, setSearch, tab }) => {
+const Search = ({
+  gridFilms,
+  setGridFilms,
+  page,
+  setPage,
+  search,
+  setSearch,
+  tab,
+}) => {
   const theme = useTheme();
   console.log(tab);
   const getFilms = async (url) => {
@@ -26,6 +40,7 @@ const Search = ({ gridFilms, setGridFilms, page, search, setSearch, tab }) => {
   };
 
   const handleSearch = (e) => {
+    setPage(1);
     setGridFilms([]);
     setSearch(e.target.value);
   };
@@ -37,6 +52,9 @@ const Search = ({ gridFilms, setGridFilms, page, search, setSearch, tab }) => {
   return (
     <>
       <CssBaseline />
+      <Typography variant="h2" textAlign="center" mt={2}>
+        Search
+      </Typography>
       <Grid container spacing={2} my={5}>
         <Grid item xs={12}>
           <TextField

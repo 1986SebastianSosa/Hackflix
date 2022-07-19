@@ -64,6 +64,9 @@ const TvShows = () => {
         }}
       ></Box>
       <Container>
+        <Typography variant="h2" textAlign="center" mt={2}>
+          TV Shows
+        </Typography>
         <Genres
           type="movie"
           setTvShows={setTvShows}
