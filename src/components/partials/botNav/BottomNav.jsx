@@ -20,7 +20,10 @@ export default function BottomNav() {
       <BottomNavigation
         showLabels
         value={value}
-        sx={{ backgroundColor: "background.default" }}
+        sx={{
+          backgroundColor: "background.default",
+          py: "2rem",
+        }}
         onChange={(event, newValue) => {
           setValue(newValue);
         }}
