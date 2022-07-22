@@ -164,58 +164,73 @@ const About = () => {
               structure in a way that made the information flow as simple and
               straightforward as posible.
             </Typography>
+            <Typography variant="body1">
+              I started working on the <b>fetch trending films functionality</b>{" "}
+              and render the poster images in the main section ('/'), with a
+              link to a view that showed details about the film, which could be
+              done using a <b>single endpoint</b>. After that I thought of
+              adding more information so I read the <b>API Docs</b> more
+              carefully and came up with the idea of fetching not only films but
+              also <b>TV Shows</b>, the <b>crew and cast</b> of all films and
+              shows and the <b>categories</b> or <b>genres</b> associated with
+              each class of resourse, all done through{" "}
+              <b>different endpoints</b> and/or different <b>headers</b> on the
+              HTTP request URLs.
+            </Typography>
           </Grid>
-          <Grid item xs={12} md={4}>
-            <Box display="flex" justifyContent="space-between">
-              <Box
-                sx={{ width: "100px", height: "200px", textAlign: "center" }}
-              >
-                <img
-                  src={HackAcademy}
-                  alt="Hack Academy"
-                  style={{ width: "100%", height: "100px" }}
-                />
-                <h4>Hack Academy</h4>
+          <Grid item xs={12} md={4} display="flex" alignItems="center">
+            <Box width="100%">
+              <Box display="flex" justifyContent="space-between">
+                <Box
+                  sx={{ width: "100px", height: "200px", textAlign: "center" }}
+                >
+                  <img
+                    src={HackAcademy}
+                    alt="Hack Academy"
+                    style={{ width: "100%", height: "100px" }}
+                  />
+                  <h4>Hack Academy</h4>
+                </Box>
+                <Box
+                  sx={{ width: "100px", height: "200px", textAlign: "center" }}
+                >
+                  <img
+                    src={TMDB}
+                    alt="The Movie Database"
+                    style={{
+                      width: "100%",
+                      height: "100px",
+                    }}
+                  />
+                  <h4>The Movie Database</h4>
+                </Box>
               </Box>
-              <Box
-                sx={{ width: "100px", height: "200px", textAlign: "center" }}
-              >
-                <img
-                  src={TMDB}
-                  alt="The Movie Database"
-                  style={{
+              <Box width="100%" margin="auto" textAlign="center">
+                <h4>Technologies</h4>
+                <Box
+                  sx={{
+                    mt: 3,
                     width: "100%",
-                    height: "100px",
+                    display: "flex",
+                    justifyContent: "space-between",
                   }}
-                />
-                <h4>The Movie Database</h4>
-              </Box>
-            </Box>
-            <Box width="100%" margin="auto" textAlign="center">
-              <h4>Technologies</h4>
-              <Box
-                sx={{
-                  mt: 3,
-                  width: "100%",
-                  display: "flex",
-                  justifyContent: "space-between",
-                }}
-              >
-                <Box>
-                  <FontAwesomeIcon icon={faHtml5} className="fa-2xl" />
-                  <Typography variant="body2">HTML</Typography>
-                </Box>
-                <Box>
-                  <FontAwesomeIcon icon={faCss3} className="fa-2xl" />
-                  <Typography variant="body2">CSS</Typography>
-                </Box>
-                <Box>
-                  <FontAwesomeIcon icon={faJs} className="fa-2xl" />
-                  <Typography variant="body2">JavaScript</Typography>
-                </Box>
-                <Box>
-                  <FontAwesomeIcon icon={faReact} className="fa-2xl" />
-                  <Typography variant="body2">React.js</Typography>
+                >
+                  <Box>
+                    <FontAwesomeIcon icon={faHtml5} className="fa-2xl" />
+                    <Typography variant="body2">HTML</Typography>
+                  </Box>
+                  <Box>
+                    <FontAwesomeIcon icon={faCss3} className="fa-2xl" />
+                    <Typography variant="body2">CSS</Typography>
+                  </Box>
+                  <Box>
+                    <FontAwesomeIcon icon={faJs} className="fa-2xl" />
+                    <Typography variant="body2">JavaScript</Typography>
+                  </Box>
+                  <Box>
+                    <FontAwesomeIcon icon={faReact} className="fa-2xl" />
+                    <Typography variant="body2">React.js</Typography>
+                  </Box>
                 </Box>
               </Box>
             </Box>
