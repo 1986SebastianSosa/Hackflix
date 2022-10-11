@@ -36,11 +36,12 @@ const FilmDetails = () => {
   const [cast, setCast] = useState([]);
   const [similarFilms, setSimilarFilms] = useState([]);
   const query900 = useMediaQuery("(min-width:900px)");
+  const query600 = useMediaQuery("(min-width:600px)");
 
   const crewCardStyle = {
     marginTop: "5px",
-    width: "115px",
-    height: "150px",
+    maxWidth: "115px",
+    maxHeight: "150px",
     objectFit: "cover",
     borderRadius: "15px",
     border: `1px solid ${theme.palette.primary.main}`,
@@ -319,8 +320,8 @@ const FilmDetails = () => {
           <Slider
             arrows={false}
             autoplay={true}
-            slidesToShow={query900 ? 5 : 3}
-            slidesToScroll={2}
+            slidesToShow={query900 ? 5 : query600 ? 3 : 1}
+            slidesToScroll={query900 ? 3 : query600 ? 2 : 1}
             speed={1000}
             autoplaySpeed={4000}
           >
