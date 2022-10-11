@@ -23,8 +23,6 @@ const SearchGrid = () => {
     setPage((prev) => prev + 1);
   };
 
-  console.log(tab);
-
   return (
     <>
       <Box

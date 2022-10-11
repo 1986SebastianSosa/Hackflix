@@ -52,7 +52,6 @@ const FilmDetails = () => {
         const response = await axios.get(
           `${baseUrl}/movie/${params.id}?api_key=${apiKey}`
         );
-        console.log(response.data);
         setSelectedFilm(response.data);
       } catch (err) {
         return err;
@@ -100,7 +99,7 @@ const FilmDetails = () => {
       <CssBaseline />
 
       {Object.entries(selectedFilm).length === 0 ? (
-        <ClockLoader />
+        <ClockLoader color="white" cssOverride={{ margin: "auto" }} />
       ) : (
         <main>
           <Box sx={{ overflow: "hidden" }}>

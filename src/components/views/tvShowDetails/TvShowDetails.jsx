@@ -31,10 +31,11 @@ const TvShowDetails = () => {
   const [cast, setCast] = useState([]);
   const [similarShows, setSimilarShows] = useState([]);
   const query900 = useMediaQuery("(min-width:900px)");
+  const query600 = useMediaQuery("(min-width:600px)");
 
   const crewCardStyle = {
     marginTop: "5px",
-    width: "115px",
+    maxWidth: "115px",
     height: "150px",
     objectFit: "cover",
     borderRadius: "15px",
@@ -49,7 +50,6 @@ const TvShowDetails = () => {
         const response = await axios.get(
           `${baseUrl}/tv/${params.id}?api_key=${apiKey}`
         );
-        console.log(response.data);
         setSelectedShow(response.data);
       } catch (err) {
         return err;
@@ -62,7 +62,6 @@ const TvShowDetails = () => {
         const response = await axios.get(
           `${baseUrl}/tv/${params.id}/credits?api_key=${apiKey}`
         );
-        console.log(response.data);
         setCrew(response.data.crew);
         setCast(response.data.cast);
       } catch (err) {
@@ -181,11 +180,17 @@ const TvShowDetails = () => {
                       </li>
                       <li>
                         <p>
-                          {selectedShow.genres.map((genre) => genre.name + "/")}
+                          {selectedShow.genres.map((genre) => (
+                            <span key={genre.name}>{genre.name + "/"}</span>
+                          ))}
                         </p>
                       </li>
                       <li>
-                        <p>{selectedShow.runtime + " mins"}</p>
+                        <p>
+                          {selectedShow?.runtime
+                            ? selectedShow?.runtime + " mins"
+                            : null}
+                        </p>
                       </li>
                     </ul>
                   </Box>
@@ -203,7 +208,13 @@ const TvShowDetails = () => {
                   </Typography>
                   {crew && (
                     <Grid container mt={1} spacing={3} height="100%">
-                      <Grid xs={12} sm={4} display="flex" alignItems="center">
+                      <Grid
+                        item
+                        xs={12}
+                        sm={4}
+                        display="flex"
+                        alignItems="center"
+                      >
                         <Box textAlign="center" m="auto">
                           <p>
                             <b> Directed by: </b>
@@ -240,7 +251,12 @@ const TvShowDetails = () => {
                         <Grid container>
                           {actors.map((actor) => {
                             return (
-                              <Grid item xs={4} textAlign="center">
+                              <Grid
+                                item
+                                xs={4}
+                                textAlign="center"
+                                key={actor.name}
+                              >
                                 <Box>
                                   <img
                                     src={
@@ -287,8 +303,8 @@ const TvShowDetails = () => {
           <Slider
             arrows={false}
             autoplay={true}
-            slidesToShow={query900 ? 5 : 3}
-            slidesToScroll={2}
+            slidesToShow={query900 ? 5 : query600 ? 3 : 1}
+            slidesToScroll={query900 ? 3 : query600 ? 2 : 1}
             speed={1000}
             autoplaySpeed={4000}
           >

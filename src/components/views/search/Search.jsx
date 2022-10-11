@@ -21,7 +21,6 @@ const Search = ({
   tab,
 }) => {
   const theme = useTheme();
-  console.log(tab);
   const getFilms = async (url) => {
     const res = await axios({
       method: "get",
