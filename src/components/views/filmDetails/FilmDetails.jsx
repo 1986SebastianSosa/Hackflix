@@ -8,13 +8,9 @@ import {
   Typography,
   Box,
   useTheme,
-  Card,
-  CardHeader,
-  CardMedia,
   useMediaQuery,
 } from "@mui/material";
 import { useState } from "react";
-import ContentLoader from "react-content-loader";
 import "./filmDetails.css";
 import cameraIcon from "../../../img/camera_icon.png";
 import Slider from "react-slick";
@@ -22,6 +18,7 @@ import StarIcon from "@mui/icons-material/Star";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
+import { ClockLoader } from "react-spinners";
 
 const FilmDetails = () => {
   const params = useParams();
@@ -103,7 +100,7 @@ const FilmDetails = () => {
       <CssBaseline />
 
       {Object.entries(selectedFilm).length === 0 ? (
-        <ContentLoader />
+        <ClockLoader />
       ) : (
         <main>
           <Box sx={{ overflow: "hidden" }}>

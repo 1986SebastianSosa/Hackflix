@@ -11,12 +11,12 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import { useState } from "react";
-import ContentLoader from "react-content-loader";
 import "./tvShowDetails.css";
 import cameraIcon from "../../../img/camera_icon.png";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { ClockLoader } from "react-spinners";
 
 const TvShowDetails = () => {
   const params = useParams();
@@ -98,7 +98,7 @@ const TvShowDetails = () => {
       <CssBaseline />
 
       {Object.entries(selectedShow).length === 0 ? (
-        <ContentLoader />
+        <ClockLoader color="white" cssOverride={{ margin: "auto" }} />
       ) : (
         <main>
           <Box sx={{ overflow: "hidden" }}>

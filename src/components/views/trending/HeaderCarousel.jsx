@@ -9,12 +9,12 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import { useState } from "react";
-import ContentLoader from "react-content-loader";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import { useNavigate } from "react-router-dom";
 import Logo from "../../../img/Logos/logo_transparent_edited_4.png";
 import { Container } from "@mui/system";
+import { ClockLoader } from "react-spinners";
 
 const HeaderCarousel = ({ trending }) => {
   const baseUrl = process.env.REACT_APP_BASE_URL;
@@ -39,7 +39,9 @@ const HeaderCarousel = ({ trending }) => {
     <>
       <CssBaseline />
       {trending.length === 0 ? (
-        <ContentLoader />
+        <div sx={{ my: "100rem" }}>
+          <ClockLoader color="white" cssOverride={{ margin: "auto" }} />
+        </div>
       ) : (
         <>
           <Slider
